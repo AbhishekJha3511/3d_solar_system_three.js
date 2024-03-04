@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+
+#c{
+    /* background: url('https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png') no-repeat center center; */
+    background: black;
+    background-size: cover;
+}
