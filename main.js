@@ -1,9 +1,9 @@
 // import * as THREE from "three";
 // import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import * as THREE from "https://cdn.skypack.dev/three@0.129.0";
-import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
+import * as THREE from "https://cdn.skypack.dev/three@0.135.0";
+import { OrbitControls } from "https://cdn.skypack.dev/three@0.135.0/examples/jsm/controls/OrbitControls.js";
 
-let scene, camera, renderer, controls, skybox;
+let scene, camera, renderer, controls, skyBox;
 
 // Characters
 let pSun,
@@ -59,15 +59,15 @@ let neptune_orbit_speed = 0.4;
 
 //space box
 function createMaterialArray() {
-  const skyboxImagePaths = [
-    "../img/space_angels/space_bk.png",
-    "../img/space_angels/space_dn.png",
-    "../img/space_angels/space_ft.png",
-    "../img/space_angels/space_lf.png",
-    "../img/space_angels/space_rt.png",
-    "../img/space_angels/space_up.png",
+  const skyBoxImagePaths = [
+    "../public/img/space_angels/space_bk.png",
+    "../public/img/space_angels/space_dn.png",
+    "../public/img/space_angels/space_ft.png",
+    "../public/img/space_angels/space_lf.png",
+    "../public/img/space_angels/space_rt.png",
+    "../public/img/space_angels/space_up.png",
   ];
-  const materialArray = skyboxImagePaths.map((image) => {
+  const materialArray = skyBoxImagePaths.map((image) => {
     let texture = new THREE.TextureLoader().load(image);
     return new THREE.MeshBasicMaterial({ map: texture, side: THREE.BackSide });
   });
@@ -76,9 +76,9 @@ function createMaterialArray() {
 
 function setSkyBox() {
   const materialArray = createMaterialArray();
-  const skyboxGeo = new THREE.BoxGeometry(1000, 1000, 1000);
-  skybox = new THREE.Mesh(skyboxGeo, materialArray);
-  scene.add(skybox);
+  const skyBoxGeo = new THREE.BoxGeometry(1000, 1000, 1000);
+  skyBox = new THREE.Mesh(skyBoxGeo, materialArray);
+  scene.add(skyBox);
 }
 
 function loadPlanetTexture(
@@ -156,42 +156,72 @@ function init() {
   );
 
   setSkyBox();
-  pSun = loadPlanetTexture("../img/sun_hd.jpg", 40, 100, 100, "basic"); //load the sun texture and radius or hxw
-  pEarth = loadPlanetTexture("../img/earth_hd.jpg", 8, 100, 100, "standard");
-  pMoon = loadPlanetTexture("../img/moon_hd.jpg", 10, 100, 100, "standard");
-  pMars = loadPlanetTexture("../img/mars_hd.jpg", 7, 100, 100, "standard");
+  pSun = loadPlanetTexture("../public/img/sun_hd.jpg", 40, 100, 100, "basic"); //load the sun texture and radius or hxw
+  pEarth = loadPlanetTexture(
+    "../public/img/earth_hd.jpg",
+    8,
+    100,
+    100,
+    "standard"
+  );
+  pMoon = loadPlanetTexture(
+    "../public/img/moon_hd.jpg",
+    10,
+    100,
+    100,
+    "standard"
+  );
+  pMars = loadPlanetTexture(
+    "../public/img/mars_hd.jpg",
+    7,
+    100,
+    100,
+    "standard"
+  );
   pJupiter = loadPlanetTexture(
-    "../img/jupiter_hd.jpg",
+    "../public/img/jupiter_hd.jpg",
     20,
     100,
     100,
     "standard"
   );
   pMercury = loadPlanetTexture(
-    "../img/mercury_hd.jpg",
+    "../public/img/mercury_hd.jpg",
     4,
     100,
     100,
     "standard"
   );
-  pVenus = loadPlanetTexture("../img/venus_hd.jpg", 6, 100, 100, "standard");
+  pVenus = loadPlanetTexture(
+    "../public/img/venus_hd.jpg",
+    6,
+    100,
+    100,
+    "standard"
+  );
   pSaturn = loadPlanetTexture(
-    "../img/saturn_8k.jpg",
+    "../public/img/saturn_8k.jpg",
     16,
     100,
     100,
     "standard",
-    "../img/saturn_ring.png"
+    "../public/img/saturn_ring.png"
   );
 
   pNeptune = loadPlanetTexture(
-    "../img/neptune_hd.jpg",
+    "../public/img/neptune_hd.jpg",
     10,
     100,
     100,
     "standard"
   );
-  pUranus = loadPlanetTexture("../img/uranus_hd.jpg", 12, 100, 100, "standard");
+  pUranus = loadPlanetTexture(
+    "../public/img/uranus_hd.jpg",
+    12,
+    100,
+    100,
+    "standard"
+  );
 
   scene.add(pSun); //add the sun to the scene and the sun is in the center
   scene.add(pEarth);
@@ -217,7 +247,7 @@ function init() {
   createRingGeometry(mercury_orbit_radius);
   createRingGeometry(venus_orbit_radius);
   createRingGeometry(saturn_orbit_radius);
-  createRingGeometry(pSaturn, 4, "../img/saturn_ring.png");
+  createRingGeometry(pSaturn, 4, "../public/img/saturn_ring.png");
   createRingGeometry(neptune_orbit_radius);
   createRingGeometry(uranus_orbit_radius);
 
@@ -292,7 +322,6 @@ function animate(time) {
   // Update the camera position to follow planet
   camera.position.copy(pNeptune.position);
   camera.position.y += 100; // Adjust the height above the planet
-
 
   // Update the camera's rotation to match Neptune's rotation (optional)
   // camera.rotation.set(0, pMoon.rotation.y, 0);
