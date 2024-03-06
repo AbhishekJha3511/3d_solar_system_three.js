@@ -60,12 +60,12 @@ let neptune_orbit_speed = 0.4;
 //space box
 function createMaterialArray() {
   const skyBoxImagePaths = [
-    "../public/img/space_angels/space_bk.png",
-    "../public/img/space_angels/space_dn.png",
-    "../public/img/space_angels/space_ft.png",
-    "../public/img/space_angels/space_lf.png",
-    "../public/img/space_angels/space_rt.png",
-    "../public/img/space_angels/space_up.png",
+    "/img/space_angels/space_bk.png",
+    "/img/space_angels/space_dn.png",
+    "/img/space_angels/space_ft.png",
+    "/img/space_angels/space_lf.png",
+    "/img/space_angels/space_rt.png",
+    "/img/space_angels/space_up.png",
   ];
   const materialArray = skyBoxImagePaths.map((image) => {
     let texture = new THREE.TextureLoader().load(image);
@@ -156,67 +156,67 @@ function init() {
   );
 
   setSkyBox();
-  pSun = loadPlanetTexture("../public/img/sun_hd.jpg", 40, 100, 100, "basic"); //load the sun texture and radius or hxw
+  pSun = loadPlanetTexture("/img/sun_hd.jpg", 40, 100, 100, "basic"); //load the sun texture and radius or hxw
   pEarth = loadPlanetTexture(
-    "../public/img/earth_hd.jpg",
+    "/img/earth_hd.jpg",
     8,
     100,
     100,
     "standard"
   );
   pMoon = loadPlanetTexture(
-    "../public/img/moon_hd.jpg",
+    "/img/moon_hd.jpg",
     10,
     100,
     100,
     "standard"
   );
   pMars = loadPlanetTexture(
-    "../public/img/mars_hd.jpg",
+    "/img/mars_hd.jpg",
     7,
     100,
     100,
     "standard"
   );
   pJupiter = loadPlanetTexture(
-    "../public/img/jupiter_hd.jpg",
+    "/img/jupiter_hd.jpg",
     20,
     100,
     100,
     "standard"
   );
   pMercury = loadPlanetTexture(
-    "../public/img/mercury_hd.jpg",
+    "/img/mercury_hd.jpg",
     4,
     100,
     100,
     "standard"
   );
   pVenus = loadPlanetTexture(
-    "../public/img/venus_hd.jpg",
+    "/img/venus_hd.jpg",
     6,
     100,
     100,
     "standard"
   );
   pSaturn = loadPlanetTexture(
-    "../public/img/saturn_8k.jpg",
+    "/img/saturn_8k.jpg",
     16,
     100,
     100,
     "standard",
-    "../public/img/saturn_ring.png"
+    "/img/saturn_ring.png"
   );
 
   pNeptune = loadPlanetTexture(
-    "../public/img/neptune_hd.jpg",
+    "/img/neptune_hd.jpg",
     10,
     100,
     100,
     "standard"
   );
   pUranus = loadPlanetTexture(
-    "../public/img/uranus_hd.jpg",
+    "/img/uranus_hd.jpg",
     12,
     100,
     100,
@@ -247,7 +247,7 @@ function init() {
   createRingGeometry(mercury_orbit_radius);
   createRingGeometry(venus_orbit_radius);
   createRingGeometry(saturn_orbit_radius);
-  createRingGeometry(pSaturn, 4, "../public/img/saturn_ring.png");
+  createRingGeometry(pSaturn, 4, "/img/saturn_ring.png");
   createRingGeometry(neptune_orbit_radius);
   createRingGeometry(uranus_orbit_radius);
 
