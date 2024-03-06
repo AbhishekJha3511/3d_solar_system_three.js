@@ -16,8 +16,5 @@
   },
   "devDependencies": {
     "vite": "^5.1.5"
-  },
-  "engines": {
-    "node": "18.x"
   }
 }
